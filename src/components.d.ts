@@ -12,8 +12,12 @@ import '@stencil/core';
 
 export namespace Components {
 
-  interface DeckgoQrcode {}
-  interface DeckgoQrcodeAttributes extends StencilHTMLAttributes {}
+  interface DeckgoQrcode {
+    'content': string;
+  }
+  interface DeckgoQrcodeAttributes extends StencilHTMLAttributes {
+    'content'?: string;
+  }
 }
 
 declare global {

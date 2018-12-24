@@ -29,6 +29,8 @@ This project has for goal to let you easily generate a QR code in your [DeckDeck
 
 However, this Web Component could be use with or without [DeckDeckGo] respectively could be use in any web projects.
 
+To generate the QR code, the project [qrcode-generator](https://github.com/kazuhikoarase/qrcode-generator) from [Kazuhiko Arase](https://github.com/kazuhikoarase) is used.
+
 ## Getting Started
 
 The [DeckDeckGo] - QR Code Web Component could be use directly in your project from a CDN, using a simple script include, or could be installed from [npm](https://www.npmjs.com/package/deckdeckgo-qrcode).
