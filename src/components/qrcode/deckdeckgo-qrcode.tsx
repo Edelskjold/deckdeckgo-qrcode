@@ -27,7 +27,7 @@ export class DeckdeckgoQRCode {
 
       QRCodeGenerator.qrcode.stringToBytesFuncs['UTF-8'];
 
-      const qrGenerator = QRCodeGenerator.qrcode(4, 'M');
+      const qrGenerator = QRCodeGenerator.qrcode(0, 'H');
       qrGenerator.addData(this.content, 'Byte');
       qrGenerator.make();
 

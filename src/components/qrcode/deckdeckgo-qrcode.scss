@@ -1,0 +1,14 @@
+svg {
+  width: var(--deckgo-qrcode-size);
+  height: var(--deckgo-qrcode-size);
+
+  stroke: var(--deckgo-qrcode-border-color);
+
+  rect {
+    fill: var(--deckgo-qrcode-background, transparent);
+  }
+
+  path {
+    fill: var(--deckgo-qrcode-color);
+  }
+}
