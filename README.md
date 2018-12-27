@@ -56,7 +56,7 @@ The [Stencil documentation](https://stenciljs.com/docs/overview) provide example
 
 ## Usage
 
-The `<deckgo-qrcode/>` Web Component will generate a QR code.
+The `<deckgo-qrcode/>` Web Component will generate a `<svg/>` QR code with per default a correction level set to high.
 
 ### Properties
 
@@ -64,6 +64,7 @@ The `<deckgo-qrcode/>` expose the following properties:
 
 | Property     | Attribute     | Description | Type      | Default               |
 | ------------ | ------------- | ----------- | --------- | --------------------- |
+| `content` | `content` | The content, a text or an url, of the QR code to generate | `string` | `` |
 
 ### Styling
 
@@ -71,11 +72,10 @@ The `<deckgo-qrcode/>` could be styled using the following CSS4 variables:
 
 | CSS4 variable                      | Default | Note |
 | -------------------------- |:-----------------:|:-----------------:|
-
-### Methods
-
-The `<deckgo-qrcode/>` expose the following methods:
-
+| --deckgo-qrcode-size | | The size, width and height, of the QR code |
+| --deckgo-qrcode-border-stroke | | The border color of the QR code |
+| --deckgo-qrcode-background-fill | transparent | The QR code's background |
+| --deckgo-qrcode-color-fill | | The QR code's color (the color of the QR code's squares it contains)  |
 
 #### Examples
 

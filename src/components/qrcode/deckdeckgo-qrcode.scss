@@ -2,13 +2,13 @@ svg {
   width: var(--deckgo-qrcode-size);
   height: var(--deckgo-qrcode-size);
 
-  stroke: var(--deckgo-qrcode-border-color);
+  stroke: var(--deckgo-qrcode-border-stroke);
 
   rect {
-    fill: var(--deckgo-qrcode-background, transparent);
+    fill: var(--deckgo-qrcode-background-fill, transparent);
   }
 
   path {
-    fill: var(--deckgo-qrcode-color);
+    fill: var(--deckgo-qrcode-color-fill);
   }
 }
