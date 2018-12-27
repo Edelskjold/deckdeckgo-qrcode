@@ -1,4 +1,4 @@
-import {Component, Element, Prop} from '@stencil/core';
+import {Component, Element, Method, Prop} from '@stencil/core';
 
 import * as QRCodeGenerator from '../utils/qrcode-generator/qrcode';
 
@@ -14,8 +14,17 @@ export class DeckdeckgoQRCode {
   @Prop() content: string;
 
   async componentDidLoad() {
-    const qrCode: string = await this.createQRCode();
-    await this.parseQRCode(qrCode);
+    await this.generate();
+  }
+
+  @Method()
+  generate(): Promise<void> {
+    return new Promise<void>(async (resolve) => {
+      const qrCode: string = await this.createQRCode();
+      await this.parseQRCode(qrCode);
+
+      resolve();
+    });
   }
 
   private createQRCode(): Promise<string> {
@@ -47,6 +56,13 @@ export class DeckdeckgoQRCode {
       const container: HTMLElement = this.el.shadowRoot.querySelector('div.deckgo-qrcode-container');
 
       if (container) {
+
+        // Remove if needed previous svg
+        const svg: SVGSVGElement = container.querySelector('svg');
+        if (svg) {
+          svg.parentNode.removeChild(svg);
+        }
+
         try {
           const template = document.createElement('template');
           template.innerHTML = qrCode;

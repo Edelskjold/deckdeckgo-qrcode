@@ -14,6 +14,7 @@ export namespace Components {
 
   interface DeckgoQrcode {
     'content': string;
+    'generate': () => Promise<void>;
   }
   interface DeckgoQrcodeAttributes extends StencilHTMLAttributes {
     'content'?: string;

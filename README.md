@@ -77,6 +77,14 @@ The `<deckgo-qrcode/>` could be styled using the following CSS4 variables:
 | --deckgo-qrcode-background-fill | transparent | The QR code's background |
 | --deckgo-qrcode-color-fill | | The QR code's color (the color of the QR code's squares it contains)  |
 
+#### Methods
+
+The `<deckgo-qrcode/>` component exposes the following method in case you would like to refresh your QR code, for example on resize of the window on in case you would set its content asynchronously:
+
+```
+generate() => Promise<void>
+```
+
 #### Examples
 
 You could find the examples in the [src/index.html](src/index.html) of the project.
