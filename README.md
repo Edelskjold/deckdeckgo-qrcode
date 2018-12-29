@@ -56,7 +56,9 @@ The [Stencil documentation](https://stenciljs.com/docs/overview) provide example
 
 ## Usage
 
-The `<deckgo-qrcode/>` Web Component will generate a `<svg/>` QR code with per default a correction level set to high.
+The `<deckgo-qrcode/>` Web Component will generate per default a `<svg/>` QR code with a correction level set to high.
+
+Optionally, it's also possible to generate the QR code as an `<img/>`.
 
 ### Properties
 
@@ -65,10 +67,12 @@ The `<deckgo-qrcode/>` expose the following properties:
 | Property     | Attribute     | Description | Type      | Default               |
 | ------------ | ------------- | ----------- | --------- | --------------------- |
 | `content` | `content` | The content, a text or an url, of the QR code to generate | `string` | `` |
+| `type`     | `type`      | The type of QR code to generate, `<svg/>` or `<img/>` | `string` | `svg` |
+| `cellSize` | `cell-size` | The size of the cell, useful to generate a bigger QR code, specially in case of `<img/>`. Use it wisely, I suggest a value between 0 and 20 for example. | `number` |                 |
 
 ### Styling
 
-The `<deckgo-qrcode/>` could be styled using the following CSS4 variables:
+The `<deckgo-qrcode/>` could be styled using the following CSS4 variables which would only applies on the type `<svg/>`:
 
 | CSS4 variable                      | Default | Note |
 | -------------------------- |:-----------------:|:-----------------:|
@@ -76,6 +80,10 @@ The `<deckgo-qrcode/>` could be styled using the following CSS4 variables:
 | --deckgo-qrcode-border-stroke | | The border color of the QR code |
 | --deckgo-qrcode-background-fill | transparent | The QR code's background |
 | --deckgo-qrcode-color-fill | | The QR code's color (the color of the QR code's squares it contains)  |
+
+#### Note
+
+Currently the styling of the `<img/>` QR code is not supported.
 
 #### Methods
 
