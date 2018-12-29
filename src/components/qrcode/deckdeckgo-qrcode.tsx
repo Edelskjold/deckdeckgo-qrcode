@@ -2,6 +2,11 @@ import {Component, Element, Method, Prop} from '@stencil/core';
 
 import * as QRCodeGenerator from '../utils/qrcode-generator/qrcode';
 
+enum DeckdeckgoQRCodeType {
+  SVG = 'svg',
+  IMG = 'img'
+}
+
 @Component({
   tag: 'deckgo-qrcode',
   styleUrl: 'deckdeckgo-qrcode.scss',
@@ -12,6 +17,10 @@ export class DeckdeckgoQRCode {
   @Element() el: HTMLElement;
 
   @Prop() content: string;
+
+  @Prop() type: string = DeckdeckgoQRCodeType.SVG;
+
+  @Prop() cellSize: number;
 
   async componentDidLoad() {
     await this.generate();
@@ -40,7 +49,7 @@ export class DeckdeckgoQRCode {
       qrGenerator.addData(this.content, 'Byte');
       qrGenerator.make();
 
-      const qrCode: string = qrGenerator.createSvgTag();
+      const qrCode: string = this.isQRCodeTypeImg() ?  qrGenerator.createImgTag(this.cellSize) : qrGenerator.createSvgTag(this.cellSize);
 
       resolve(qrCode);
     });
@@ -56,12 +65,7 @@ export class DeckdeckgoQRCode {
       const container: HTMLElement = this.el.shadowRoot.querySelector('div.deckgo-qrcode-container');
 
       if (container) {
-
-        // Remove if needed previous svg
-        const svg: SVGSVGElement = container.querySelector('svg');
-        if (svg) {
-          svg.parentNode.removeChild(svg);
-        }
+        this.removePreviousQRCode(container);
 
         try {
           const template = document.createElement('template');
@@ -75,6 +79,22 @@ export class DeckdeckgoQRCode {
 
       resolve();
     });
+  }
+
+  private removePreviousQRCode(container: HTMLElement) {
+    const svg: SVGSVGElement = container.querySelector('svg');
+    if (svg) {
+      svg.parentNode.removeChild(svg);
+    }
+
+    const img: HTMLImageElement = container.querySelector('img');
+    if (img) {
+      img.parentNode.removeChild(img);
+    }
+  }
+
+  private isQRCodeTypeImg() {
+    return this.type === DeckdeckgoQRCodeType.IMG;
   }
 
   render() {

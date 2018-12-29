@@ -7,9 +7,11 @@
 
 ## Properties
 
-| Property  | Attribute | Description | Type     | Default     |
-| --------- | --------- | ----------- | -------- | ----------- |
-| `content` | `content` |             | `string` | `undefined` |
+| Property   | Attribute   | Description | Type     | Default                    |
+| ---------- | ----------- | ----------- | -------- | -------------------------- |
+| `cellSize` | `cell-size` |             | `number` | `undefined`                |
+| `content`  | `content`   |             | `string` | `undefined`                |
+| `type`     | `type`      |             | `string` | `DeckdeckgoQRCodeType.SVG` |
 
 
 ## Methods

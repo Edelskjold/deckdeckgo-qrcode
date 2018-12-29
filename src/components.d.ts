@@ -13,11 +13,15 @@ import '@stencil/core';
 export namespace Components {
 
   interface DeckgoQrcode {
+    'cellSize': number;
     'content': string;
     'generate': () => Promise<void>;
+    'type': string;
   }
   interface DeckgoQrcodeAttributes extends StencilHTMLAttributes {
+    'cellSize'?: number;
     'content'?: string;
+    'type'?: string;
   }
 }
 
