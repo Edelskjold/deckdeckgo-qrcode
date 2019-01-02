@@ -81,7 +81,7 @@ The `<deckgo-qrcode/>` expose the following properties:
 
 | Property     | Attribute     | Description | Type      | Default               | Only applies for type `<img/>` |
 | ------------ | ------------- | ----------- | --------- | --------------------- |:-----------------:|
-| `content` | `content` | The content, a text or an url, of the QR code to generate | `string` | `` ||
+| `content` | `content` | The content, a text or an url, of the QR code to generate | `string` |  ||
 | `type`     | `type`      | The type of QR code to generate, `<svg/>` or `<img/>` | `string` | `svg` ||
 | `cellSize` | `cell-size` | The size of the cell, useful to generate a bigger QR code, specially in case of `<img/>`. Use it wisely, I suggest a value between 0 and 20 for example. | `number` |                 ||
 | `margin`             | `margin`               | The size of the code margin, in case you would like more spacing            | `number` |                 ||
