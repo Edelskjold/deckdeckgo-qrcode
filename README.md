@@ -36,11 +36,11 @@ To generate the QR code, the project [qrcode-generator](https://github.com/kazuh
 
 This Web Component let you generate QR code like the following as `svg` (default) or `img`:
 
-<img src="https://github.com/fluster/deckdeckgo/blob/master/doc/deckdeckgo-qrcode-example.png" width="200px">
+<img src="https://github.com/fluster/deckdeckgo-qrcode/blob/master/doc/deckdeckgo-qrcode-example.png" width="200px">
 
 Optionally you could also display a logo over your QR code:
 
-<img src="https://github.com/fluster/deckdeckgo/blob/master/doc/deckdeckgo-qrcode-logo-example.png" width="200px">
+<img src="https://github.com/fluster/deckdeckgo-qrcode/blob/master/doc/deckdeckgo-qrcode-logo-example.png" width="200px">
 
 ## Getting Started
 
