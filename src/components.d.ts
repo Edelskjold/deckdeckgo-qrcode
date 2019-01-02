@@ -16,11 +16,19 @@ export namespace Components {
     'cellSize': number;
     'content': string;
     'generate': () => Promise<void>;
+    'imgAlt': string;
+    'imgBackgroundColor': string;
+    'imgFillColor': string;
+    'margin': number;
     'type': string;
   }
   interface DeckgoQrcodeAttributes extends StencilHTMLAttributes {
     'cellSize'?: number;
     'content'?: string;
+    'imgAlt'?: string;
+    'imgBackgroundColor'?: string;
+    'imgFillColor'?: string;
+    'margin'?: number;
     'type'?: string;
   }
 }

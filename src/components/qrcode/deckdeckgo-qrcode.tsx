@@ -21,6 +21,11 @@ export class DeckdeckgoQRCode {
   @Prop() type: string = DeckdeckgoQRCodeType.SVG;
 
   @Prop() cellSize: number;
+  @Prop() margin: number;
+
+  @Prop() imgBackgroundColor: string;
+  @Prop() imgFillColor: string;
+  @Prop() imgAlt: string;
 
   async componentDidLoad() {
     await this.generate();
@@ -49,7 +54,7 @@ export class DeckdeckgoQRCode {
       qrGenerator.addData(this.content, 'Byte');
       qrGenerator.make();
 
-      const qrCode: string = this.isQRCodeTypeImg() ?  qrGenerator.createImgTag(this.cellSize) : qrGenerator.createSvgTag(this.cellSize);
+      const qrCode: string = this.isQRCodeTypeImg() ?  qrGenerator.createImgTag(this.cellSize, this.margin, this.imgAlt, this.imgFillColor, this.imgBackgroundColor) : qrGenerator.createSvgTag(this.cellSize, this.margin);
 
       resolve(qrCode);
     });

@@ -526,7 +526,7 @@ export var qrcode = function() {
       return qrSvg;
     };
 
-    _this.createDataURL = function(cellSize, margin) {
+    _this.createDataURL = function(cellSize, margin, fillColor, backgroundColor) {
 
       cellSize = cellSize || 2;
       margin = (typeof margin == 'undefined')? cellSize * 4 : margin;
@@ -535,7 +535,7 @@ export var qrcode = function() {
       var min = margin;
       var max = size - margin;
 
-      return createDataURL(size, size, function(x, y) {
+      return createDataURL(size, size, fillColor, backgroundColor, function(x, y) {
         if (min <= x && x < max && min <= y && y < max) {
           var c = Math.floor( (x - min) / cellSize);
           var r = Math.floor( (y - min) / cellSize);
@@ -546,7 +546,7 @@ export var qrcode = function() {
       } );
     };
 
-    _this.createImgTag = function(cellSize, margin, alt) {
+    _this.createImgTag = function(cellSize, margin, alt, fillColor, backgroundColor) {
 
       cellSize = cellSize || 2;
       margin = (typeof margin == 'undefined')? cellSize * 4 : margin;
@@ -556,7 +556,7 @@ export var qrcode = function() {
       var img = '';
       img += '<img';
       img += '\u0020src="';
-      img += _this.createDataURL(cellSize, margin);
+      img += _this.createDataURL(cellSize, margin, fillColor, backgroundColor);
       img += '"';
       img += '\u0020width="';
       img += size;
@@ -1959,7 +1959,7 @@ export var qrcode = function() {
   // gifImage (B/W)
   //---------------------------------------------------------------------
 
-  var gifImage = function(width, height) {
+  var gifImage = function(width, height, fillColor, backgroundColor) {
 
     var _width = width;
     var _height = height;
@@ -1991,15 +1991,15 @@ export var qrcode = function() {
       //---------------------------------
       // Global Color Map
 
-      // black
-      out.writeByte(0x00);
-      out.writeByte(0x00);
-      out.writeByte(0x00);
+      // Fill color, default black
+      out.writeByte(fillColor && fillColor.length >= 6 ? parseInt('0x' + fillColor.substr(0, 2)) : 0x00);
+      out.writeByte(fillColor && fillColor.length >= 6 ? parseInt('0x' + fillColor.substr(2, 2)) : 0x00);
+      out.writeByte(fillColor && fillColor.length >= 6 ? parseInt('0x' + fillColor.substr(4, 2)) : 0x00);
 
-      // white
-      out.writeByte(0xff);
-      out.writeByte(0xff);
-      out.writeByte(0xff);
+      // Background color, default white
+      out.writeByte(backgroundColor && backgroundColor.length >= 6 ? parseInt('0x' + backgroundColor.substr(0, 2)) : 0xff);
+      out.writeByte(backgroundColor && backgroundColor.length >= 6 ? parseInt('0x' + backgroundColor.substr(2, 2)) : 0xff);
+      out.writeByte(backgroundColor && backgroundColor.length >= 6 ? parseInt('0x' + backgroundColor.substr(4, 2)) : 0xff);
 
       //---------------------------------
       // Image Descriptor
@@ -2169,8 +2169,8 @@ export var qrcode = function() {
     return _this;
   };
 
-  var createDataURL = function(width, height, getPixel) {
-    var gif = gifImage(width, height);
+  var createDataURL = function(width, height, fillColor, backgroundColor, getPixel) {
+    var gif = gifImage(width, height, fillColor, backgroundColor);
     for (var y = 0; y < height; y += 1) {
       for (var x = 0; x < width; x += 1) {
         gif.setPixel(x, y, getPixel(x, y) );
