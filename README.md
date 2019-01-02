@@ -79,28 +79,32 @@ To display a logo over your QR code, this Web Component provide a `slot` called 
 
 The `<deckgo-qrcode/>` expose the following properties:
 
-| Property     | Attribute     | Description | Type      | Default               |
-| ------------ | ------------- | ----------- | --------- | --------------------- |
-| `content` | `content` | The content, a text or an url, of the QR code to generate | `string` | `` |
-| `type`     | `type`      | The type of QR code to generate, `<svg/>` or `<img/>` | `string` | `svg` |
-| `cellSize` | `cell-size` | The size of the cell, useful to generate a bigger QR code, specially in case of `<img/>`. Use it wisely, I suggest a value between 0 and 20 for example. | `number` |                 |
+| Property     | Attribute     | Description | Type      | Default               | Only applies for type `<img/>` |
+| ------------ | ------------- | ----------- | --------- | --------------------- |:-----------------:|
+| `content` | `content` | The content, a text or an url, of the QR code to generate | `string` | `` ||
+| `type`     | `type`      | The type of QR code to generate, `<svg/>` or `<img/>` | `string` | `svg` ||
+| `cellSize` | `cell-size` | The size of the cell, useful to generate a bigger QR code, specially in case of `<img/>`. Use it wisely, I suggest a value between 0 and 20 for example. | `number` |                 ||
+| `margin`             | `margin`               | The size of the code margin, in case you would like more spacing            | `number` |                 ||
+| `imgAlt`             | `img-alt`              | An alternate text for the image of the QR code            | `string` |                 | X |
+| `imgBackgroundColor` | `img-background-color` | The background color of the QR code. The value should be provided in a RGB-hex format. For example: `FF0000`. | `string` |                 | X |
+| `imgFillColor`       | `img-fill-color`       | The color use to fill the QR code. The value should be provided in a RGB-hex format. For example: `FF0000`.            | `string` |                 | X |
 
 ### Styling
 
 The `<deckgo-qrcode/>` could be styled using the following CSS4 variables which would only applies on the type `<svg/>`:
 
-| CSS4 variable                      | Default | Note |
-| -------------------------- |:-----------------:|:-----------------:|
-| --deckgo-qrcode-container-display | inline-block | The display property of the shadow host and the code container |
-| --deckgo-qrcode-size | | The size, width and height, of the QR code |
-| --deckgo-qrcode-logo-ratio-size | 3 | If you are injecting a logo, its size, width and height, will be calculated with `--deckgo-qrcode-size` (or `100%` if not provided) divided by this value |
-| --deckgo-qrcode-border-stroke | | The border color of the QR code |
-| --deckgo-qrcode-background-fill | transparent | The QR code's background |
-| --deckgo-qrcode-color-fill | | The QR code's color (the color of the QR code's squares it contains)  |
+| CSS4 variable                      | Default | Note | Only applies for type `<svg/>` |
+| -------------------------- |:-----------------:|:-----------------:|:-----------------:|
+| --deckgo-qrcode-container-display | inline-block | The display property of the shadow host and the code container ||
+| --deckgo-qrcode-size | | The size, width and height, of the QR code | X |
+| --deckgo-qrcode-logo-ratio-size | 3 | If you are injecting a logo, its size, width and height, will be calculated with `--deckgo-qrcode-size` (or `100%` if not provided) divided by this value | X |
+| --deckgo-qrcode-border-stroke | | The border color of the QR code | X |
+| --deckgo-qrcode-background-fill | transparent | The QR code's background | X |
+| --deckgo-qrcode-color-fill | | The QR code's color (the color of the QR code's squares it contains)  | X |
 
-#### Note
+#### Styling type img
 
-Currently the styling of the `<img/>` QR code is not supported.
+In oder to style QR code if its type is set to  `<img/>`, you will need to use properties instead of CSS4 variables.
 
 #### Methods
 
