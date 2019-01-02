@@ -98,6 +98,8 @@ export class DeckdeckgoQRCode {
   }
 
   render() {
-    return <div class="deckgo-qrcode-container"></div>;
+    return <div class="deckgo-qrcode-container">
+      <slot name="logo"></slot>
+    </div>;
   }
 }
